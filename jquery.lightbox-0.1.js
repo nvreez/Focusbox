@@ -4,11 +4,11 @@
  */
 (function ($) {
     var $lightbox = $('<div id="lightboxOverlay"><div class="lightbox"><a class="close">&nbsp;</a><article class="content"></article></div></div>'),
-		$lightboxBox = $lightbox.find(".lightbox"),
-		$overlayFixedBodyWrapper,
-		$pageWrap,
-		ajaxCall, // Scoped global for ajax calls, so they can be aborted if necessary
-		onClose = [];
+        $lightboxBox = $lightbox.find(".lightbox"),
+        $overlayFixedBodyWrapper,
+        $pageWrap,
+        ajaxCall, // Scoped global for ajax calls, so they can be aborted if necessary
+        onClose = [];
 
     $lightbox.find('.close').on("click", function () { // Binds close event to close button
         $.lightbox('close');
@@ -20,13 +20,13 @@
         }
     });
 
-    function cleanup() { // Aborts earlier ajax calls if they did not yet complete
-        if (ajaxCall) {
+    function cleanup() {
+        if (ajaxCall) { // Aborts earlier ajax calls if they did not yet complete
             ajaxCall.abort();
             ajaxCall = undefined;
         }
 
-        $(document).off('keydown', onKeyDown);
+        $(document).off('keyDown_lightbox', onKeyDown);
     }
 
     function pageWrap (argument) { // Wrap the page in a containing div to fix the scrolling position
@@ -41,7 +41,7 @@
 
     function openOverlay(content, onLoad) {
         var $body = $('body'),
-			scrollY = window.scrollY;
+            scrollY = window.scrollY;
         if (!$overlayFixedBodyWrapper) {
             $overlayFixedBodyWrapper = $("<div id='overlayFixedBodyWrapper' />");
             $body.append($overlayFixedBodyWrapper);
@@ -76,7 +76,7 @@
             functionLoad();
         }
 
-        $(document).on('keydown', onKeyDown);
+        $(document).on('keyDown_lightbox', onKeyDown);
     }
 
     function closeOverlay() {
@@ -94,7 +94,7 @@
             $pageWrap = false;
 
             $('html, body').removeClass('hasOverlay');
-            $(document).off('keydown', onKeyDown);
+            $(document).off('keyDown_lightbox', onKeyDown);
 
             if (onClose.length) {
                 for (var i = onClose.length - 1; i >= 0; i--) {
@@ -136,7 +136,7 @@
                     var html = data.d.html || data;
                     var onLoad = data.d.onLoad || false;
                     var $response = $(html),
-						$content = $response;
+                        $content = $response;
 
                     if (contentSelector) {
                         //Either filter or find the content, depending on where the content is nested
@@ -226,11 +226,11 @@
 
     function BindLightbox(element) {
         var $this = $(element),
-        	POSTdata = $this.data("lightbox");
+            POSTdata = $this.data("lightbox");
 
         $this.on("click", function (e) {
             e.preventDefault();
-            $.lightbox("openAjax", "/Service/ObenService.asmx/GetStoryHTML", POSTdata);
+            $.lightbox("openAjax", "://AJAX_URL", POSTdata);
         });
     }
 
