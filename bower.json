@@ -1,0 +1,28 @@
+{
+  "name": "focusbox",
+  "version": "0.0.0",
+  "authors": [
+    "nvreez <nvreez@gmail.com>"
+  ],
+  "description": "Focusbox is a lightbox variant with intuitive scrolling behaviour. Focusbox fixes the page while allowing to scroll the overlay. Focusbox is build to show extra information or content, however it can also be modded for use as a photoviewer or similar applications. Developed for developers.",
+  "moduleType": [
+    "amd"
+  ],
+  "keywords": [
+    "lightbox"
+  ],
+  "license": "GPL",
+  "private": true,
+  "dependencies": {
+    "jquery": "latest",
+    "requirejs": "latest",
+    "normalize-css": "latest"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
