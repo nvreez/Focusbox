@@ -2,68 +2,76 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
     <title>Testpage</title>
-<link rel="stylesheet" href="/../bower_components/normalize-css/normalize.css">
-<style>
-    html {
-        font: 0.875em/1.6em Lucida Sans, Verdana, Arial, sans-serif;
-    }
-    /**
-     * Backgrounds on body should also be added to the page wrapper to keep the background scroll position intact
-     * Gradient from http://codepen.io/tumanova/pen/tkvmi
-     */
-    body,
-    #pageWrap {
-        background: #b4ced8;
-        background: -moz-linear-gradient(-25deg, #b4ced8 17%, #d7e5d4 51%, #e2e8c9 72%, #f1e5b9 87%, #edd7ac 100%);
-        background: -webkit-gradient(linear, left top, right bottom, color-stop(17%, #b4ced8), color-stop(51%, #d7e5d4), color-stop(72%, #e2e8c9), color-stop(87%, #f1e5b9), color-stop(100%, #edd7ac));
-        background: -webkit-linear-gradient(-25deg, #b4ced8 17%, #d7e5d4 51%, #e2e8c9 72%, #f1e5b9 87%, #edd7ac 100%);
-        background: -o-linear-gradient(-25deg, #b4ced8 17%, #d7e5d4 51%, #e2e8c9 72%, #f1e5b9 87%, #edd7ac 100%);
-        background: -ms-linear-gradient(-25deg, #b4ced8 17%, #d7e5d4 51%, #e2e8c9 72%, #f1e5b9 87%, #edd7ac 100%);
-        background: linear-gradient(155deg, #b4ced8 17%, #d7e5d4 51%, #e2e8c9 72%, #f1e5b9 87%, #edd7ac 100%);
-    }
-    main {
-        margin: 0.6em;
-        background-color: rgb(242, 242, 242);
-        background-color: rgba(255, 255, 255, 0.96);
-        padding: 1em;
-    }
-    nav {
-        top: 1.1em;
-        padding: 1em;
-        max-width: 10em;
-        font-size: 1.2em;
-        position: fixed;
-        z-index: 10;
-        background-color: rgb(242, 242, 242);
-        background-color: rgba(255, 255, 255, 0.96);
-        /*box-shadow: 0 0.1em 1.4em rgba(0, 0, 0, 0.05);*/
-    }
-    nav a {
-        display: block;
-    }
-    nav h3 {
-        margin: 0 0 0.3em;
-        line-height: 1.6em;
-    }
-    #test {
-        display: none;
-    }
-    @media (min-width: 36em) {
+    <link rel="stylesheet" href="/../bower_components/normalize-css/normalize.css">
+    <style>
         html {
-            font-size: 1em;
+            font: 0.875em/1.6em Lucida Sans, Arial, sans-serif;
+        }
+
+        /**
+         * Backgrounds on body should also be added to the page wrapper to keep the background scroll position intact
+         * Gradient from http://codepen.io/tumanova/pen/tkvmi
+         */
+        body,
+        #pageWrap {
+            background: #b4ced8;
+            background: -moz-linear-gradient(-25deg, #b4ced8 17%, #d7e5d4 51%, #e2e8c9 72%, #f1e5b9 87%, #edd7ac 100%);
+            background: -webkit-gradient(linear, left top, right bottom, color-stop(17%, #b4ced8), color-stop(51%, #d7e5d4), color-stop(72%, #e2e8c9), color-stop(87%, #f1e5b9), color-stop(100%, #edd7ac));
+            background: -webkit-linear-gradient(-25deg, #b4ced8 17%, #d7e5d4 51%, #e2e8c9 72%, #f1e5b9 87%, #edd7ac 100%);
+            background: -o-linear-gradient(-25deg, #b4ced8 17%, #d7e5d4 51%, #e2e8c9 72%, #f1e5b9 87%, #edd7ac 100%);
+            background: -ms-linear-gradient(-25deg, #b4ced8 17%, #d7e5d4 51%, #e2e8c9 72%, #f1e5b9 87%, #edd7ac 100%);
+            background: linear-gradient(155deg, #b4ced8 17%, #d7e5d4 51%, #e2e8c9 72%, #f1e5b9 87%, #edd7ac 100%);
+        }
+
+        main {
+            margin: 0.6em;
+            background-color: rgb(242, 242, 242);
+            background-color: rgba(255, 255, 255, 0.96);
+            padding: 1em;
+        }
+
+        nav {
+            top: 1.1em;
+            padding: 1em;
+            max-width: 10em;
+            font-size: 1.2em;
+            position: fixed;
+            z-index: 10;
+            background-color: rgb(242, 242, 242);
+            background-color: rgba(255, 255, 255, 0.96);
+            /*box-shadow: 0 0.1em 1.4em rgba(0, 0, 0, 0.05);*/
+        }
+        nav a {
+            display: block;
+        }
+        nav h3 {
+            margin: 0 0 0.3em;
             line-height: 1.6em;
         }
-        main {
-            max-width: 32em;
-            margin: 3em auto;
-            padding: 1em 1.4em 1.4em;
+
+        #test {
+            display: none;
         }
-        nav {
-            top: 1.7em;
+
+        @media (min-width: 36em) {
+            html {
+                font-size: 1em;
+                line-height: 1.6em;
+            }
+
+            main {
+                max-width: 32em;
+                margin: 3em auto;
+                padding: 1em 1.4em 1.4em;
+            }
+
+            nav {
+                top: 1.7em;
+            }
         }
-    }
-</style>
+    </style>
 </head>
 <body>
 
