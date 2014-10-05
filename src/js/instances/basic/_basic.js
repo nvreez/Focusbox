@@ -21,6 +21,10 @@ define(['jquery', 'text!instances/basic/_template.html'], function($, template) 
 				that.close();
 			});
 		},
+		open: function(content) {
+			this.$content.html(content);
+			return this.$template;
+		},
 		render: function(content) {
 			this.$content.html(content);
 			return this.$template;
