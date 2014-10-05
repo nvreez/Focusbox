@@ -99,7 +99,7 @@
 			if (onClose.length) {
 				for (var i = onClose.length - 1; i >= 0; i--) {
 					methods[onClose[i].method].apply(this, onClose[i].arg);
-				};
+				}
 				onClose = [];
 			}
 			$(document).trigger("lightboxClosed");
@@ -141,7 +141,7 @@
 					if (contentSelector) {
 						//Either filter or find the content, depending on where the content is nested
 						$content = $response.filter(contentSelector);
-						if ($content.length == 0) {
+						if ($content.length === 0) {
 							$content = $response.find(contentSelector);
 						}
 					}
@@ -149,12 +149,12 @@
 					ajaxCall = undefined;
 					openOverlay($content, onLoad);
 				}
-			})
+			});
 		},
 
 		openIframe: function (url, onLoad) {
 			cleanup();
-			openOverlay($("<iframe src='" + url + "' frameborder='0' />"), onLoad)
+			openOverlay($("<iframe src='" + url + "' frameborder='0' />"), onLoad);
 		},
 
 		addClass: function (className) {
@@ -190,7 +190,7 @@
 					handle: handle,
 					method: method,
 					arg: Array.prototype.slice.call(arguments, 2)
-				}
+				};
 				onClose.push(func);
 				return true;
 			} else {
@@ -203,7 +203,7 @@
 				if (onClose[i].handle == handle) {
 					onClose.splice(i, 1);
 				}
-			};
+			}
 		},
 
 		getScroll: function () {
