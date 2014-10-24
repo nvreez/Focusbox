@@ -1,0 +1,16 @@
+// <div id="focusbox_pageWrap">
+// 	<!-- Original page content -->
+// </div>
+// <div id="focusbox_overlay">
+
+#focusbox_pageWrap {
+	position: fixed;
+}
+
+#focusbox_overlay {
+	position: relative;
+	min-height: 100%;
+	width: 100%;
+	background-color: #222;
+	background-color: rgba(0, 0, 0, .3);
+}

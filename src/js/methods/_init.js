@@ -1,15 +1,10 @@
 define(['jquery', 'instances/_instances'], function($, Instances) {
-	var defaults = {
-		prefix: "focusBox_",
-		closeOnOverlayClick : true,
-		pageWrapId : "pageWrap",
-		overlayId : "focusBoxOverlay"
-	},
-	instances = Instances;
+	var instances = Instances;
 
-	return function(options) {
-		this.settings = $.extend({}, defaults, options);
-		this._defaults = defaults;
+	return function() {
+		this.$body = $('body');
+		this.$overlay = $(document.createElement('div'))
+			.attr('id', this.settings.prefix + this.settings.overlayId);
 
 		this.instances = instances();
 

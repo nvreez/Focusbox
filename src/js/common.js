@@ -10,28 +10,15 @@ require.config({
 
 
 
-require(['jquery', 'focusbox'], function ($, FocusBox){
-	/**
-	 * $.focusBox([global options], [instance type[, instance options]]);
-	 */
-	/*$.focusBox = function () {
-		if(typeof arguments[0] === 'string') {
-			window.focusBox = window.focusBox || new FocusBox();
+require(['jquery', 'focusbox', 'instances/basic/basic'], function ($, Focusbox, Basic){
 
-			return window.focusBox.instance(arguments[0], arguments[1]);
-		}
+	$.focusbox = new Focusbox();
 
-		if(window.focusBox) {
-			window.focusBox.update(arguments[0]);
-		} else {
-			window.focusBox = new FocusBox(arguments[0]);
-		}
+	focusBasic = new $.focusbox.instances.Basic();
 
-		if(typeof arguments[1] === 'string') {
-			return window.focusBox.instance(arguments[1], arguments[2]);
-		}
-	};*/
-
-	$.focusBox = FocusBox;
+	$("[data-focusbox]").click(function(event){
+		event.preventDefault();
+		focusBasic.open($(this).data('focusbox'));
+	});
 });
 

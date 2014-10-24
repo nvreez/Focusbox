@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width">
     <title>Testpage</title>
     <link rel="stylesheet" href="/../bower_components/normalize-css/normalize.css">
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="focusbox.css">
+    <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,300' rel='stylesheet' type='text/css'> -->
     <style>
+        /** Style not necessary for focusbox, look in focusbox.css for required style */
         html {
             font: 0.875em/1.6em 'Open Sans', Lucida Sans, Arial, sans-serif;
             font-weight: 300;
@@ -17,11 +19,11 @@
         }
 
         /**
-         * Backgrounds on body should also be added to the page wrapper to keep the background scroll position intact
+         * Non-fixed backgrounds on body should also be added to the page wrapper to keep the background scroll position intact
          * Gradient adapted from http://codepen.io/tumanova/pen/tkvmi
          */
         body,
-        #pageWrap {
+        #focusbox_pageWrap {
             background: #b4ced8;
             background: -moz-linear-gradient(-25deg, #b3cfe2 0%, #b4ced8 17%, #d7e5d4 51%, #e2e8c9 72%, #f1e5b9 87%, #edd7ac 100%);
             background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #b3cfe2), color-stop(17%, #b4ced8), color-stop(51%, #d7e5d4), color-stop(72%, #e2e8c9), color-stop(87%, #f1e5b9), color-stop(100%, #edd7ac));
@@ -47,7 +49,6 @@
             z-index: 10;
             background-color: rgb(242, 242, 242);
             background-color: rgba(255, 255, 255, 0.96);
-            /*box-shadow: 0 0.1em 1.4em rgba(0, 0, 0, 0.05);*/
         }
         nav a {
             display: block;
@@ -84,9 +85,9 @@
 
 <nav>
     <h3>Open overlay:</h3>
-    <a href="." data-focusbox="">Link</a>
-    <a href="." data-focusbox="">Link</a>
-    <a href="." data-focusbox="">Link</a>
+    <a href="." data-focusbox='{"ajax": "test1", "post": { "yay": "woei"}}'>Link</a>
+    <a href="." data-focusbox='{"text": "test2"}'>Link</a>
+    <a href="." data-focusbox='{"selector": "main"}'>Link</a>
 </nav>
 
 <main>

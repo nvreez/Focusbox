@@ -1,0 +1,36 @@
+html, body {
+	min-height: 100%;
+}
+
+#focusbox_pageWrap {
+	position: fixed;
+	width: 100%;
+	min-height: 100%;
+}
+
+#focusbox_overlay {
+	position: absolute;
+	min-height: 100%;
+	width: 100%;
+	background-color: #222;
+	background-color: rgba(0, 0, 0, .3);
+}
+
+.focusbox {
+	margin: 5% auto;
+	max-width: 40em;
+	padding: 1.5em;
+	background: #fff;
+}
+
+.focusbox .close {
+	float: right;
+	display: block;
+	cursor: pointer;
+}
+.focusbox .close:hover {
+	background-color: #eee;
+}
+.focusbox .close::before {
+	content: 'x';
+}
