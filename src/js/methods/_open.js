@@ -1,9 +1,15 @@
 define(['jquery'], function($) {
 	function calculateScroll() {
-		var position = (window.pageYOffset !== undefined) ?
+		var positionX = (window.pageXOffset !== undefined) ?
+			window.pageXOffset :
+			(document.documentElement || document.body.parentNode || document.body).scrollLeft,
+			positionY = (window.pageYOffset !== undefined) ?
 			window.pageYOffset :
 			(document.documentElement || document.body.parentNode || document.body).scrollTop;
-		return parseFloat(position) * -1;
+		return {
+			x: parseFloat(positionX) * -1,
+			y: parseFloat(positionY) * -1
+		};
 	}
 
 	// Wrap the page in a containing div so we can fix the scrolling position
@@ -20,7 +26,7 @@ define(['jquery'], function($) {
 		return $(div);
 	}
 
-	function setCloseEvents (closeOn) {
+	function setCloseEvents(closeOn) {
 		var that = this;
 		if (closeOn.esc) {
 			$(document).one('keyup.' + this._name, function(event) {
@@ -49,15 +55,19 @@ define(['jquery'], function($) {
 			this.$overlay[0].appendChild(content[0]);
 			$(this).trigger('switched');
 		} else {
-			this.scrollY = calculateScroll();
+			this.scroll = calculateScroll();
 			this.$pageWrap = pageWrap(this.settings.prefix + this.settings.pageWrapId);
-			this.$pageWrap.css("top", this.scrollY);
+			this.$pageWrap.css({
+				left: this.scroll.x,
+				top: this.scroll.y
+			});
 
 			this.current = instance;
 			document.body.appendChild(this.$overlay[0]);
 
 			content = instance.render.apply(instance, Array.prototype.slice.call(arguments, 1));
 			this.$overlay[0].appendChild(content[0]);
+			window.scrollTo(0, 0);
 
 			setCloseEvents.call(this, this.settings.closeOn);
 			$('html, body').addClass('hasOverlay');

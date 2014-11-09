@@ -20,50 +20,36 @@ define(['jquery', 'text!instances/basic/_template.html'], function($, template) 
 			});
 		},
 		open: function(content) {
-			content = content.text || content.selector || content.ajax;
+			if (content.selector === undefined) {
+				content = content.text || content.ajax;
+			} else {
+				content = $(content.selector).html();
+			}
 			return $.focusbox.open(this, content);
 		},
 		render: function(content) {
 			this.$content.html(content);
+			var that = this;
+			this.$template.css({height: 0});
+			window.setTimeout(function(){
+				var viewHeight = window.height,
+					height = that.$content.height();
+				console.log("basic.js:33", height);
+				that.$template.animate({height: height}, 200, function(){
+					// that.$template.css('height', 'auto');
+				});
+			}, 1);
 			return this.$template;
 		},
 		close: function() {
 			this.$close.off("click." + this._name);
-			$(this).trigger("closed");
+			var that = this;
+			this.$template.animate({opacity: 1}, 200, function() {
+				$(that).trigger("closed");
+			});
 		},
 		remove: function() {}
 	});
-
-	function featureDetects() {
-		var M = Modernizr || {},
-			tests = {
-				cssanimations: M.cssanimations === undefined ? cssAnimTest() : M.cssanimations
-			};
-		return tests;
-	}
-
-	function cssAnimTest() {
-		var animation = false,
-		    animationstring = 'animation',
-		    keyframeprefix = '',
-		    domPrefixes = 'Webkit Moz O ms Khtml'.split(' '),
-		    pfx  = '';
-
-		if( elm.style.animationName !== undefined ) { animation = true; }
-
-		if( animation === false ) {
-		  for( var i = 0; i < domPrefixes.length; i++ ) {
-		    if( elm.style[ domPrefixes[i] + 'AnimationName' ] !== undefined ) {
-		      pfx = domPrefixes[ i ];
-		      animationstring = pfx + 'Animation';
-		      keyframeprefix = '-' + pfx.toLowerCase() + '-';
-		      animation = true;
-		      break;
-		    }
-		  }
-		}
-		return animation;
-	}
 
 	return Basic;
 });
