@@ -19,14 +19,14 @@ define([
 				esc: true
 			},
 			pageWrapId : "pageWrap",
-			overlayId : "overlay"
+			overlayId : "overlay",
+			overlayBgId : "overlayBg"
 		};
 
 	function Focusbox (options) {
 		this.settings = $.extend(true, {}, defaults, options);
 		this._defaults = defaults;
 		this._name = pluginName;
-		this.instances = {};
 		this.init();
 	}
 

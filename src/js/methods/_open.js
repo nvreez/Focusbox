@@ -26,6 +26,12 @@ define(['jquery'], function($) {
 		return $(div);
 	}
 
+	function fillOverlay(instance) {
+		this.current = instance;
+		content = instance.render.apply(instance, Array.prototype.slice.call(arguments, 1));
+		this.$overlay.append(content);
+	}
+
 	function setCloseEvents(closeOn) {
 		var that = this;
 		if (closeOn.esc) {
@@ -50,9 +56,7 @@ define(['jquery'], function($) {
 		var content;
 		if(this.current) {
 			this.current.close();
-			this.current = instance;
-			content = instance.render.apply(instance, Array.prototype.slice.call(arguments, 1));
-			this.$overlay[0].appendChild(content[0]);
+			fillOverlay.apply(this, arguments);
 			$(this).trigger('switched');
 		} else {
 			this.scroll = calculateScroll();
@@ -62,11 +66,9 @@ define(['jquery'], function($) {
 				top: this.scroll.y
 			});
 
-			this.current = instance;
-			document.body.appendChild(this.$overlay[0]);
-
-			content = instance.render.apply(instance, Array.prototype.slice.call(arguments, 1));
-			this.$overlay[0].appendChild(content[0]);
+			this.$body.append(this.$overlay, this.$overlayBg);
+			this.$overlayBg.css({opacity: 0}).animate({opacity: 0.3}, 180);
+			fillOverlay.apply(this, arguments);
 			window.scrollTo(0, 0);
 
 			setCloseEvents.call(this, this.settings.closeOn);

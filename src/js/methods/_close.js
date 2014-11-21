@@ -17,9 +17,12 @@ define(['jquery'], function($) {
 			window.scrollTo(-that.scroll.x, -that.scroll.y);
 			that.$pageWrap.remove();
 
-			that.current = null;
-			that.$overlay.empty().detach();
-			$(that).trigger("closed");
+			that.$overlayBg.animate({opacity: 0}, 160, function(){
+				that.current = null;
+				that.$overlay.empty().detach();
+				$('html, body').removeClass('hasOverlay');
+				$(that).trigger("closed");
+			});
 		});
 		this.current.close();
 

@@ -14,12 +14,12 @@ define(['jquery', 'text!instances/basic/_template.html'], function($, template) 
 		init: function() {
 			this.$content = this.$template.find(".content");
 			this.$close = this.$template.find(".close");
+		},
+		open: function(content) {
 			this.$close.on("click." + this._name, function (event) {
 				event.preventDefault();
 				$.focusbox.close();
 			});
-		},
-		open: function(content) {
 			if (content.selector === undefined) {
 				content = content.text || content.ajax;
 			} else {
@@ -30,21 +30,22 @@ define(['jquery', 'text!instances/basic/_template.html'], function($, template) 
 		render: function(content) {
 			this.$content.html(content);
 			var that = this;
-			this.$template.css({height: 0});
-			window.setTimeout(function(){
-				var viewHeight = window.height,
-					height = that.$content.height();
-				console.log("basic.js:33", height);
-				that.$template.animate({height: height}, 200, function(){
-					// that.$template.css('height', 'auto');
+			this.$template.css({height: 0, opacity: 0});
+
+			this.$template.animate({opacity: 1}, 100, function(){
+				var viewHeight = $(window).height(),
+					height = Math.min(that.$content.height(), viewHeight);
+
+				that.$template.animate({height: height}, 230, function(){
+					that.$template.css('height', 'auto');
 				});
-			}, 1);
+			});
 			return this.$template;
 		},
 		close: function() {
 			this.$close.off("click." + this._name);
 			var that = this;
-			this.$template.animate({opacity: 1}, 200, function() {
+			this.$template.animate({opacity: 0}, 200, function() {
 				$(that).trigger("closed");
 			});
 		},

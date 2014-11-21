@@ -6,25 +6,34 @@ html, body {
 	position: fixed;
 	width: 100%;
 	min-height: 100%;
+	z-index: 1;
 }
 
 #focusbox_overlay {
 	position: absolute;
 	min-height: 100%;
 	width: 100%;
-	background-color: #222;
-	background-color: rgba(0, 0, 0, .3);
-	-webkit-animation: bgFadeIn 2s ease;
-	-o-animation: bgFadeIn 2s ease;
-	animation: bgFadeIn 2s ease;
+	z-index: 3;
 }
 
-@keyframe bgFadeIn {
+#focusbox_overlayBg {
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: block;
+	position: fixed;
+	z-index: 2;
+	opacity: 0;
+	background: #000;
+}
+
+@keyframe fadeIn {
 	0% {
-		background-color: rgba(0, 0, 0, 0);
+		opacity: 0;
 	}
 	100% {
-		background-color: rgba(0, 0, 0, .3);
+		opacity: 0.3;
 	}
 }
 
@@ -34,7 +43,7 @@ html, body {
 	padding: 1.5em;
 	background: #fff;
 	overflow: hidden;
-	transition: height 0.2s;
+	/*transition: height 0.2s;*/
 }
 
 .focusbox .close {
