@@ -27,11 +27,14 @@ define(['jquery'], function($) {
 	}
 
 	function fillOverlay(instance) {
+		var content;
 		this.current = instance;
 		content = instance.render.apply(instance, Array.prototype.slice.call(arguments, 1));
 		this.$overlay.append(content);
+		return content;
 	}
 
+	// BUG: triggers only work once while they're also triggered by not targeted events, like other keys or click inside overlay
 	function setCloseEvents(closeOn) {
 		var that = this;
 		if (closeOn.esc) {
@@ -56,7 +59,7 @@ define(['jquery'], function($) {
 		var content;
 		if(this.current) {
 			this.current.close();
-			fillOverlay.apply(this, arguments);
+			content = fillOverlay.apply(this, arguments);
 			$(this).trigger('switched');
 		} else {
 			this.scroll = calculateScroll();
@@ -68,12 +71,13 @@ define(['jquery'], function($) {
 
 			this.$body.append(this.$overlay, this.$overlayBg);
 			this.$overlayBg.css({opacity: 0}).animate({opacity: 0.3}, 180);
-			fillOverlay.apply(this, arguments);
+			content = fillOverlay.apply(this, arguments);
 			window.scrollTo(0, 0);
 
 			setCloseEvents.call(this, this.settings.closeOn);
 			$('html, body').addClass('hasOverlay');
 			$(this).trigger('opened');
 		}
+		return content;
 	};
 });

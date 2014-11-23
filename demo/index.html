@@ -18,6 +18,10 @@
             font-weight: 300;
         }
 
+        code, pre {
+            font: 1em/1.6em courier new, monospace;
+        }
+
         /**
          * Non-fixed backgrounds on body should also be added to the page wrapper to keep the background scroll position intact
          * Gradient adapted from http://codepen.io/tumanova/pen/tkvmi
@@ -43,7 +47,7 @@
         nav {
             top: 1.1em;
             padding: 1em;
-            max-width: 10em;
+            max-width: 14em;
             font-size: 1.2em;
             position: fixed;
             z-index: 10;
@@ -52,13 +56,24 @@
         }
         nav a {
             display: block;
-            padding: 0.3em 0;
         }
         nav h3 {
             margin: 0 0 0.3em;
             line-height: 1.6em;
         }
-
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        nav li {
+            padding: 0.2em 0 0.8em;
+        }
+        nav code {
+            display: block;
+            padding-top: 0.3em;
+            font-size: 0.7em;
+        }
         #test {
             display: none;
         }
@@ -85,9 +100,20 @@
 
 <nav>
     <h3>Open overlay:</h3>
-    <a href="." data-focusbox='{"ajax": "test1", "post": { "yay": "woei"}}'>Link</a>
-    <a href="." data-focusbox='{"text": "test2"}'>Link</a>
-    <a href="." data-focusbox='{"selector": "main"}'>Link</a>
+    <ul>
+        <li>
+            <a href="." data-focusbox='{"type": "ajax", "data": { "url": "./test.php", "data": {"test": "yayay", "test2": "yayay", "test3": {"yayay": "woei"}}, "type": "GET"}}'>Ajax</a>
+            <code>{"type": "ajax", "data": { "url": "./test.php", "data": {"test": "yayay", "test2": "yayay", "test3": {"yayay": "woei"}}, "type": "post"}}</code>
+        </li>
+        <li>
+            <a href="." data-focusbox='{"type": "html", "data": "test2"}'>Text</a>
+            <code>{"type": "html", "data": "test2"}</code>
+        </li>
+        <li>
+            <a href="." data-focusbox='{"type": "selector", "data": "main"}'>Selector</a>
+            <code>{"type": "selector", "data": "main"}</code>
+        </li>
+    </ul>
 </nav>
 
 <main>

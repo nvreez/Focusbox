@@ -50,6 +50,11 @@ html, body {
 	float: right;
 	display: block;
 	cursor: pointer;
+	text-align: center;
+	line-height: 1.7em;
+	width: 1.9em;
+	height: 1.9em;
+	border-radius: 1em;
 }
 .focusbox .close:hover {
 	background-color: #eee;
