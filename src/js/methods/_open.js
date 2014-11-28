@@ -34,21 +34,22 @@ define(['jquery'], function($) {
 		return content;
 	}
 
-	// BUG: triggers only work once while they're also triggered by not targeted events, like other keys or click inside overlay
 	function setCloseEvents(closeOn) {
 		var that = this;
 		if (closeOn.esc) {
-			$(document).one('keyup.' + this._name, function(event) {
+			$(document).on('keyup.' + this._name, function(event) {
 				if (event.which === 27) {
 					event.preventDefault();
+					$(document).off('keyup.' + that._name);
 					that.close();
 				}
 			});
 		}
 		if (closeOn.overlay) {
-			this.$overlay.one('click.' + this._name, function() {
+			this.$overlay.on('click.' + this._name, function() {
 				if (event.target == that.$overlay[0]) {
 					event.preventDefault();
+					that.$overlay.off('click.' + that._name);
 					that.close();
 				}
 			});
@@ -70,7 +71,7 @@ define(['jquery'], function($) {
 			});
 
 			this.$body.append(this.$overlay, this.$overlayBg);
-			this.$overlayBg.css({opacity: 0}).animate({opacity: 0.3}, 180);
+			this.$overlayBg.css({opacity: 0}).stop(true, true).animate({opacity: 0.3}, 180);
 			content = fillOverlay.apply(this, arguments);
 			window.scrollTo(0, 0);
 

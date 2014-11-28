@@ -10,13 +10,13 @@ require.config({
 
 
 
-require(['jquery', 'focusbox', 'instances/basic/basic'], function ($, Focusbox, Basic){
+require(['jquery', 'focusbox'], function ($, Focusbox){
 
 	$.focusbox = new Focusbox();
 
 	focusBasic = new $.focusbox.instances.Basic();
 
-	$("[data-focusbox]").click(function(event){
+	$('[data-focusbox]').click(function(event){
 		event.preventDefault();
 		focusBasic.open($(this).data('focusbox'));
 	});

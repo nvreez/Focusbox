@@ -48,11 +48,11 @@ define(['jquery', 'text!instances/basic/_template.html'], function($, template) 
 			var that = this;
 			this.$template.css({height: 0, opacity: 0});
 
-			this.$template.animate({opacity: 1}, 100, function(){
+			this.$template.stop(true, true).animate({opacity: 1}, 100, function(){
 				var viewHeight = $(window).height(),
 					height = Math.min(that.$content.height(), viewHeight);
 
-				that.$template.animate({height: height}, 230, function(){
+				that.$template.stop(true, true).animate({height: height}, 230, function(){
 					that.$template.css('height', 'auto');
 				});
 			});
@@ -61,7 +61,7 @@ define(['jquery', 'text!instances/basic/_template.html'], function($, template) 
 		close: function() {
 			this.$close.off("click." + this._name);
 			var that = this;
-			this.$template.animate({opacity: 0}, 200, function() {
+			this.$template.stop(true, true).animate({opacity: 0}, 200, function() {
 				$(that).trigger("closed");
 			});
 		},

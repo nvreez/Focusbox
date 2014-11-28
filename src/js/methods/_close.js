@@ -17,7 +17,7 @@ define(['jquery'], function($) {
 			window.scrollTo(-that.scroll.x, -that.scroll.y);
 			that.$pageWrap.remove();
 
-			that.$overlayBg.animate({opacity: 0}, 160, function(){
+			that.$overlayBg.stop(true, true).animate({opacity: 0}, 160, function(){
 				that.current = null;
 				that.$overlay.empty().detach();
 				$('html, body').removeClass('hasOverlay');
