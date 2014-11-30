@@ -26,10 +26,10 @@ define(['jquery'], function($) {
 		return $(div);
 	}
 
-	function fillOverlay(instance) {
+	function fillOverlay(theme) {
 		var content;
-		this.current = instance;
-		content = instance.render.apply(instance, Array.prototype.slice.call(arguments, 1));
+		this.current = theme;
+		content = theme.render.apply(theme, Array.prototype.slice.call(arguments, 1));
 		this.$overlay.append(content);
 		return content;
 	}
@@ -56,7 +56,7 @@ define(['jquery'], function($) {
 		}
 	}
 
-	return function(instance) {
+	return function(theme) {
 		var content;
 		if(this.current) {
 			this.current.close();

@@ -22,6 +22,10 @@
             font: 1em/1.6em courier new, monospace;
         }
 
+        pre {
+            margin: 0;
+        }
+
         /**
          * Non-fixed backgrounds on body should also be added to the page wrapper to keep the background scroll position intact
          * Gradient adapted from http://codepen.io/tumanova/pen/tkvmi
@@ -70,9 +74,7 @@
             padding: 0.2em 0 0.8em;
         }
         nav pre {
-            margin: 0;
-            padding-top: 0.3em;
-            display: block;
+            margin-top: 0.3em;
             font-size: 0.7em;
         }
 
@@ -100,19 +102,19 @@
     <h3>Open overlay:</h3>
     <ul>
         <li>
-            <a href="." data-focusbox='{"type": "ajax", "data": { "url": "./test.php", "data": {"test": "It works!"}, "type": "POST"}}'>Ajax</a>
+            <a href="." data-focusbox='{"type": "ajax", "data": { "url": "./test.php", "data": {"test": "<em>It works!</em>"}, "type": "POST"}}'>Ajax</a>
             <pre>{
     "type": "ajax",
     "data": {
         "url": "./test.php",
-        "data": {"test": "It works!"},
+        "data": {"test": "&lt;em&gt;It works!&lt;/em&gt;"},
         "type": "POST"
     }
 }</pre>
         </li>
         <li>
-            <a href="." data-focusbox='{"type": "html", "data": "test2"}'>Text</a>
-            <pre>{"type": "html", "data": "test2"}</pre>
+            <a href="." data-focusbox='{"type": "html", "data": "<h1>It definitely works!</h1>"}'>Text</a>
+            <pre>{"type": "html", "data": "&lt;h1&gt;It definitely works!&lt;/h1&gt;"}</pre>
         </li>
         <li>
             <a href="." data-focusbox='{"type": "selector", "data": "#alice"}'>Selector</a>
@@ -139,11 +141,11 @@ $('[data-focusbox]').click(function(event){
     </p>
     <ul>
         <li><em>Core:</em> The lightweight core that handles fixing the page's scroll position and creating an overlay.</li>
-        <li><em>Instances:</em> The different modules that handle the content.</li>
+        <li><em>Themes:</em> The different modules that handle the content.</li>
         <li><em>jQuery method:</em> A method to bind an event to open Focusbox. Binds to a click-event on default.</li>
     </ul>
     <p>
-        I included two instance-types. You can create your own instance-types by extending the $.focusbox.instances object with your instance-theme.
+        I included two themes. The Basic theme for basic html display and the Media theme specialised in photos and video. You can create your own themes by extending the $.focusbox.themes object with your theme.
     </p>
 </main>
 

@@ -1,5 +1,5 @@
-define(['jquery', 'instances/_instances'], function($, Instances) {
-	var instances = Instances;
+define(['jquery', 'themes/_themes'], function($, Instances) {
+	var themes = Instances;
 
 	return function() {
 		this.$body = $('body');
@@ -8,7 +8,7 @@ define(['jquery', 'instances/_instances'], function($, Instances) {
 		this.$overlayBg = $(document.createElement('div'))
 			.attr('id', this.settings.prefix + this.settings.overlayBgId);
 
-		this.instances = instances();
+		this.themes = themes();
 
 		return this;
 	};

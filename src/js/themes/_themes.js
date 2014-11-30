@@ -2,17 +2,17 @@
  * Add instances to the define and as function arguments, and they will automatically be accessible.
  */
 define([
-	'instances/basic/basic'
+	'themes/basic/basic'
 ], function(
-	instanceBasic
+	ThemeBasic
 ) {
 	var arg = arguments,
-		instances = {};
+		themes = {};
 
 	return function() {
 		for (var i = arg.length - 1; i >= 0; i--) {
-			instances[arg[i].name] = arg[i];
+			themes[arg[i].name] = arg[i];
 		}
-		return instances;
+		return themes;
 	};
 });
