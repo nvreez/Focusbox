@@ -20,5 +20,10 @@ require(['jquery', 'focusbox'], function ($, Focusbox){
 		event.preventDefault();
 		focusBasic.open($(this).data('focusbox'));
 	});
+
+	$('#toggleData').click(function(event){
+		event.preventDefault();
+		$("nav").toggleClass('is-showData');
+	})
 });
 

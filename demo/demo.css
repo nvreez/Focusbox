@@ -1,0 +1,119 @@
+/** Style not necessary for focusbox, look in focusbox.css for required style */
+html {
+    font: 0.875em/1.6em 'Open Sans', Lucida Sans, Arial, sans-serif;
+    font-weight: 300;
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+h1, h2, h3 {
+    font-weight: 300;
+}
+
+code, pre {
+    font: 1em/1.6em courier new, monospace;
+}
+
+pre {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    display: inline-block;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+/**
+ * Non-fixed backgrounds on body should also be added to the page wrapper to keep the background scroll position intact
+ * Gradient adapted from http://codepen.io/tumanova/pen/tkvmi
+ */
+body,
+#focusbox_pageWrap {
+    background: #b4ced8;
+    background: -moz-linear-gradient(-25deg, #b3cfe2 0%, #b4ced8 17%, #d7e5d4 51%, #e2e8c9 72%, #f1e5b9 87%, #edd7ac 100%);
+    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #b3cfe2), color-stop(17%, #b4ced8), color-stop(51%, #d7e5d4), color-stop(72%, #e2e8c9), color-stop(87%, #f1e5b9), color-stop(100%, #edd7ac));
+    background: -webkit-linear-gradient(-25deg, #b3cfe2 0%, #b4ced8 17%, #d7e5d4 51%, #e2e8c9 72%, #f1e5b9 87%, #edd7ac 100%);
+    background: -o-linear-gradient(-25deg, #b3cfe2 0%, #b4ced8 17%, #d7e5d4 51%, #e2e8c9 72%, #f1e5b9 87%, #edd7ac 100%);
+    background: -ms-linear-gradient(-25deg, #b3cfe2 0%, #b4ced8 17%, #d7e5d4 51%, #e2e8c9 72%, #f1e5b9 87%, #edd7ac 100%);
+    background: linear-gradient(155deg, #b3cfe2 0%, #b4ced8 17%, #d7e5d4 51%, #e2e8c9 72%, #f1e5b9 87%, #edd7ac 100%);
+}
+
+main, #alice {
+    margin: 0.6em;
+    padding: 1em;
+    background-color: rgb(242, 242, 242);
+    background-color: rgba(255, 255, 255, 0.96);
+}
+
+nav {
+    top: 4%;
+    padding: 1em;
+    min-width: 10em;
+    max-width: 100%;
+    max-height: 96%;
+    position: fixed;
+    overflow: auto;
+    font-size: 1.2em;
+    z-index: 10;
+    background-color: rgb(242, 242, 242);
+    background-color: rgba(255, 255, 255, 0.96);
+}
+
+nav a {
+    display: block;
+}
+
+nav h3 {
+    margin: 0.2em 0 0.3em;
+    line-height: 1.6em;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+nav li {
+    padding: 0.2em 0 0.8em;
+}
+
+nav pre {
+    margin-top: 0.3em;
+    font-size: 0.7em;
+    display: none;
+}
+
+nav.is-showData pre {
+    display: block;
+}
+
+nav #toggleData {
+    text-align: right;
+    font-size: 0.7em;
+    line-height: 1em;
+}
+
+@media (min-width: 36em) {
+    html {
+        font-size: 1em;
+        line-height: 1.6em;
+    }
+
+    main, #alice {
+        max-width: 32em;
+        margin: 3em auto;
+        padding: 1em 1.4em 1.4em;
+    }
+
+    nav {
+        top: 6%;
+        max-height: 94%;
+    }
+}

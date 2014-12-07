@@ -45,17 +45,25 @@ define(['jquery', 'text!themes/basic/_template.html'], function($, template) {
 		},
 		render: function(content) {
 			this.$content.html(content);
-			var that = this;
-			this.$template.css({height: 0, opacity: 0});
+			var that = this,
+				height, viewHeight;
 
-			this.$template.stop(true, true).animate({opacity: 1}, 100, function(){
-				var viewHeight = $(window).height(),
-					height = Math.min(that.$content.height(), viewHeight);
+			this.$template.css({opacity: 0});
 
-				that.$template.stop(true, true).animate({height: height}, 230, function(){
-					that.$template.css('height', 'auto');
+			// Make sure this.$template has content to calculate its height
+			window.setTimeout(function(){
+				height = that.$template.outerHeight();
+
+				that.$template.stop(true, true).css({height: 0}).animate({opacity: 1}, 100, function(){
+					viewHeight = $(window).height();
+
+					height = Math.min(height, viewHeight);
+
+					that.$template.stop(true, true).animate({height: height}, 230, function(){
+						that.$template.css('height', 'auto');
+					});
 				});
-			});
+			}, 1);
 			return this.$template;
 		},
 		close: function() {
@@ -65,7 +73,10 @@ define(['jquery', 'text!themes/basic/_template.html'], function($, template) {
 				$(that).trigger("closed");
 			});
 		},
-		remove: function() {}
+		remove: function() {
+			this.$close.off("click." + this._name);
+			this.$template.stop(true, true);
+		}
 	});
 
 	return Basic;
