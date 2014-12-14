@@ -20,27 +20,6 @@ define(['jquery', 'text!themes/basic/_template.html'], function($, template) {
 				event.preventDefault();
 				$.focusbox.close();
 			});
-
-			var that = this;
-
-			switch (content.type) {
-				case "ajax":
-					content = content.data;
-					return $.ajax({
-						url: content.url,
-						data: content.data,
-						type: content.type,
-						success: function(data) {
-							$.focusbox.open(that, data);
-						}
-					});
-				case "selector":
-					content = $(content.data).html();
-					break;
-				case "html":
-					content = content.data;
-					break;
-			}
 			return $.focusbox.open(this, content);
 		},
 		render: function(content) {

@@ -10,20 +10,15 @@ require.config({
 
 
 
-require(['jquery', 'focusbox'], function ($, Focusbox){
+require(['jquery', 'focusbox', 'jquery.focusbox'], function ($, Focusbox){
 
 	$.focusbox = new Focusbox();
 
-	focusBasic = new $.focusbox.themes.Basic();
-
-	$('[data-focusbox]').click(function(event){
-		event.preventDefault();
-		focusBasic.open($(this).data('focusbox'));
-	});
+	$('[data-focusbox]').focusbox();
 
 	$('#toggleData').click(function(event){
 		event.preventDefault();
 		$("nav").toggleClass('is-showData');
-	})
+	});
 });
 

@@ -49,14 +49,6 @@
             This is the demo-page for Focusbox. You can use the menu on the left to open the Focusbox in different ways. Below is the first chapter of Alice in Wonderland, both for your enjoyment and to allow scrolling.
         </p>
         <p>
-            I used this code to bind the click-event:
-        </p>
-        <pre>
-$('[data-focusbox]').click(function(event){
-    event.preventDefault();
-    focusBasic.open($(this).data('focusbox'));
-});</pre>
-        <p>
             Focusbox is modular. I seperated the code in three parts:
         </p>
         <ul>
@@ -67,6 +59,10 @@ $('[data-focusbox]').click(function(event){
         <p>
             I included two themes. The Basic theme for basic html display and the Media theme specialised in photos and video. You can create your own themes by extending the $.focusbox.themes object with your theme.
         </p>
+        <p>
+            I made a simple jQuery.fn method that checks which theme to use and binds it to an event-type of choice, defaulting to a click-event. Usage:
+        </p>
+        <pre>$('[data-focusbox]').focusbox([eventType]);</pre>
     </main>
 
     <article id="alice">
