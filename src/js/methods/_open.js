@@ -1,4 +1,4 @@
-define(['jquery'], function($) {
+define(['jquery'], function() {
 	function calculateScroll() {
 		var positionX = (window.pageXOffset !== undefined) ?
 			window.pageXOffset :

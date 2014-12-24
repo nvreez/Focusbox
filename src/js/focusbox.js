@@ -1,11 +1,10 @@
 define([
-	'jquery',
 	'methods/_init',
 	'methods/_open',
 	'methods/_close',
-	'methods/_options'
+	'methods/_options',
+	'jquery'
 ], function(
-	$,
 	methodInit,
 	methodOpen,
 	methodClose,

@@ -1,4 +1,4 @@
-define(['jquery', 'text!themes/basic/_template.html'], function($, template) {
+define(['text!themes/basic/_template.html', 'jquery'], function(template) {
 	var defaults = {};
 
 	function Basic(parent, options) {

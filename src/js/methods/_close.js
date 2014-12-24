@@ -3,7 +3,7 @@
 // </div>
 // <div id="focusboxOverlay">
 
-define(['jquery'], function($) {
+define(['jquery'], function() {
 
 	return function() {
 		var pageWrap = this.$pageWrap[0],

@@ -9,10 +9,8 @@ define([
 	var arg = arguments,
 		themes = {};
 
-	return function() {
-		for (var i = arg.length - 1; i >= 0; i--) {
-			themes[arg[i].name] = arg[i];
-		}
-		return themes;
-	};
+	for (var i = arg.length - 1; i >= 0; i--) {
+		themes[arg[i].name] = arg[i];
+	}
+	return themes;
 });

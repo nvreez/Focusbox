@@ -1,4 +1,4 @@
-define(['jquery', 'focusbox'], function($, Focusbox) {
+define(['focusbox', 'jquery'], function(Focusbox) {
 	function BindFocusbox(element, eventType) {
 		this.element = $(element);
 		this.data = this.element.data('focusbox');

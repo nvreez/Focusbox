@@ -10,8 +10,41 @@ module.exports = function (grunt) {
         	options: {
         		livereload: true
         	}
+        },
+        requirejs: {
+            js: {
+                options: {
+                    baseUrl: 'src/js/',
+                    paths: {
+                        jquery: '../../bower_components/jquery/dist/jquery.min',
+                        text: 'plugins/text'
+                    },
+                    include: ['main'],
+                    exclude: ['jquery', 'text'],
+                    out: 'dist/focusbox.min.js',
+
+                    optimize: 'uglify2',
+                    findNestedDependencies: true,
+
+                    onModuleBundleComplete: function (data) {
+                        var fs = require('fs'),
+                        amdclean = require('amdclean'),
+                        outputFile = data.path;
+
+                        fs.writeFileSync(outputFile, amdclean.clean({
+                            filePath: outputFile,
+                            wrap: {
+                                // This string is prepended to the file
+                                start: ';(function($, window, document, undefined) {\n',
+                                // This string is appended to the file
+                                end: '\n}(jQuery, window, document));'
+                            }
+                        }));
+                    }
+                }
+            }
         }
     });
 
-    grunt.registerTask('default', ['watch']);
+    grunt.registerTask('default', ['requirejs','watch']);
 };

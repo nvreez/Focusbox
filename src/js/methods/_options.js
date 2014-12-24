@@ -1,4 +1,4 @@
-define(['jquery'], function($) {
+define(['jquery'], function() {
 	return function(options){
 		this.settings = $.extend(true, {}, this.settings, options);
 		this.$overlay.attr('id', this.settings.prefix + this.settings.overlayId);
