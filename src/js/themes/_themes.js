@@ -10,7 +10,7 @@ define([
 		themes = {};
 
 	for (var i = arg.length - 1; i >= 0; i--) {
-		themes[arg[i].name] = arg[i];
+		themes[arg[i].name] = arg[i].theme;
 	}
 	return themes;
 });

@@ -9,7 +9,15 @@ module.exports = function (grunt) {
         watch: {
         	options: {
         		livereload: true
-        	}
+        	},
+            scripts: {
+                files: ['src/js/**/*.js'],
+                tasks: ['requirejs']
+            },
+            style: {
+                files: ['src/sass/**/*.scss'],
+                tasks: ['sass']
+            }
         },
         requirejs: {
             js: {
@@ -23,8 +31,8 @@ module.exports = function (grunt) {
                     exclude: ['jquery', 'text'],
                     out: 'dist/focusbox.min.js',
 
-                    optimize: 'uglify2',
                     findNestedDependencies: true,
+                    optimize: 'uglify2',
 
                     onModuleBundleComplete: function (data) {
                         var fs = require('fs'),
@@ -37,14 +45,26 @@ module.exports = function (grunt) {
                                 // This string is prepended to the file
                                 start: ';(function($, window, document, undefined) {\n',
                                 // This string is appended to the file
-                                end: '\n}(jQuery, window, document));'
+                                end: '\n})(jQuery, window, document);'
                             }
                         }));
                     }
                 }
             }
+        },
+        sass: {
+            options: {
+                sourceMap: true,
+                precision: 10,
+                outputStyle: 'compressed' // compressed||nested
+            },
+            dist: {
+                files: {
+                    'dist/focusbox.min.css': 'src/sass/focusbox.scss'
+                }
+            }
         }
     });
 
-    grunt.registerTask('default', ['requirejs','watch']);
+    grunt.registerTask('default', ['requirejs', 'sass', 'watch']);
 };

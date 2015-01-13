@@ -14,7 +14,9 @@
   "license": "GPL",
   "private": true,
   "dependencies": {
-    "jquery": "latest",
+    "jquery": "latest"
+  },
+  "devDependencies": {
     "requirejs": "latest",
     "normalize-css": "latest"
   },

@@ -36,6 +36,5 @@ define([
 		options: methodOptions
 	});
 
-
     return Focusbox;
 });

@@ -1,10 +1,10 @@
 define(['text!themes/basic/_template.html', 'jquery'], function(template) {
-	var defaults = {};
+	var defaults = {},
+		themeName = "Basic";
 
 	function Basic(parent, options) {
 		this.settings = $.extend({}, defaults, options);
 		this._defaults = defaults;
-		this._name = "Basic";
 		this.parent = parent;
 		this.$template = $(template);
 		this.init();
@@ -16,7 +16,7 @@ define(['text!themes/basic/_template.html', 'jquery'], function(template) {
 			this.$close = this.$template.find(".close");
 		},
 		open: function(content) {
-			this.$close.on("click." + this._name, function (event) {
+			this.$close.on("click." + themeName, function (event) {
 				event.preventDefault();
 				$.focusbox.close();
 			});
@@ -46,17 +46,20 @@ define(['text!themes/basic/_template.html', 'jquery'], function(template) {
 			return this.$template;
 		},
 		close: function() {
-			this.$close.off("click." + this._name);
 			var that = this;
+			this.$close.off("click." + themeName);
 			this.$template.stop(true, true).animate({opacity: 0}, 200, function() {
 				$(that).trigger("closed");
 			});
 		},
 		remove: function() {
-			this.$close.off("click." + this._name);
+			this.$close.off("click." + themeName);
 			this.$template.stop(true, true);
 		}
 	});
 
-	return Basic;
+	return {
+		theme: Basic,
+		name: themeName
+	};
 });
