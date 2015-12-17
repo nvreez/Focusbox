@@ -1,5 +1,5 @@
 # Focusbox
-Focusbox is a lightbox variant with intuitive scrolling behaviour. Focusbox locks the main page while it allows scrolling of the overlay, even on iOS. Also, Focusbox is build on modules, seperating the core behaviour from different themes (views). This makes it easier to hack, for example as an interactive costum gallery.
+Focusbox is a lightbox variant with intuitive scrolling behaviour. Focusbox locks the main page while it allows scrolling of the overlay, even on iOS. Also, Focusbox is build on modules, seperating the core behaviour from different themes (views). This makes it easier to hack, for example as an interactive costum gallery. This script is still in progress but can be used if cautious.
 
 ## Workings
 When the Focusbox is opened, the whole content of the `body`-tag is wrapped in a div (`#pageWrap`). This is done in a way that protects all bound events. Wrapping the whole body content can have a big impact on some scripts, so test carefully. This method is used to allow Focusbox to lock the page, even on iOS. The dic `#pageWrap` get's `position: fixed;` and also receives a negative `top` css based on the current y-scrolling position.
@@ -28,7 +28,7 @@ Focusbox is modular. I seperated the code in three parts:
 - *Themes:* The different modules that handle the content.
 - *jQuery method:* A method to bind an event to open Focusbox. Binds to a click-event on default.
 
-I included two themes. The Basic theme for basic html display and the Media theme specialised in photos and video. You can create your own themes by extending the $.focusbox.themes object with your theme.
+I plan to two themes. The Basic theme for basic html display and the Media theme specialised in photos and video. You can create your own themes by extending the $.focusbox.themes object with your theme. Right now only the Basic theme has been tested.
 
 I made a simple jQuery.fn method that checks which theme to use and binds it to an event-type of choice, defaulting to a click-event. Usage:
 
@@ -45,3 +45,7 @@ JS initialisation:
 ```js
 $('[data-focusbox]').focusbox([eventType]);
 ```
+
+## Demo
+
+You can run the included demo by running the root as a server and navigating to `./demo/` so the `./dist` folder is reachable. The demo needs jQuery though which I include using bower, but you can direct to another jQuery location in `index.html`.
