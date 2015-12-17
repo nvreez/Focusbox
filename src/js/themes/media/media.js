@@ -1,8 +1,8 @@
-define(['text!themes/basic/_template.html', 'jquery'], function(template) {
+define(['text!themes/media/_template.html', 'jquery'], function(template) {
 	var defaults = {},
-		themeName = "Basic";
+		themeName = "Media";
 
-	function Basic(parent, options) {
+	function Media(parent, options) {
 		this.settings = $.extend({}, defaults, options);
 		this._defaults = defaults;
 		this.parent = parent;
@@ -10,7 +10,7 @@ define(['text!themes/basic/_template.html', 'jquery'], function(template) {
 		this.init();
 	}
 
-	$.extend(true, Basic.prototype, {
+	$.extend(true, Media.prototype, {
 		init: function() {
 			this.$content = this.$template.find(".content");
 			this.$close = this.$template.find(".close");
@@ -59,7 +59,7 @@ define(['text!themes/basic/_template.html', 'jquery'], function(template) {
 	});
 
 	return {
-		theme: Basic,
+		theme: Media,
 		name: themeName
 	};
 });

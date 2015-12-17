@@ -46,7 +46,7 @@ define(['jquery'], function() {
 			});
 		}
 		if (closeOn.overlay) {
-			this.$overlay.on('click.' + this._name, function() {
+			this.$overlay.on('click.' + this._name, function(event) {
 				if (event.target == that.$overlay[0]) {
 					event.preventDefault();
 					that.$overlay.off('click.' + that._name);

@@ -27,7 +27,7 @@
 }'</pre>
             </li>
             <li>
-                <a href="." data-focusbox='{"type": "html", "data": "<h1>It definitely works!</h1>"}'>Text</a>
+                <a href="." data-focusbox='{"type": "html", "data": "<h1>It definitely works!</h1>"}'>HTML</a>
                 <pre>data-focusbox='{
     "type": "html",
     "data": "&lt;h1&gt;It definitely works!&lt;/h1&gt;"
@@ -57,7 +57,7 @@
             <li><em>jQuery method:</em> A method to bind an event to open Focusbox. Binds to a click-event on default.</li>
         </ul>
         <p>
-            I included two themes. The Basic theme for basic html display and the Media theme specialised in photos and video. You can create your own themes by extending the $.focusbox.themes object with your theme.
+            I included the Basic theme for basic html display. You can create your own themes to change how the lightbox handles its contents. To create a theme you extend the $.focusbox.themes object with your theme.
         </p>
         <p>
             I made a simple jQuery.fn method that checks which theme to use and binds it to an event-type of choice, defaulting to a click-event. Usage:
